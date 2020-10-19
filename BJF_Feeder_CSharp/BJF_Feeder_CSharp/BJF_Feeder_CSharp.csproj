@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BJF_Feeder.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="MainWnd.cs">
       <SubType>Form</SubType>

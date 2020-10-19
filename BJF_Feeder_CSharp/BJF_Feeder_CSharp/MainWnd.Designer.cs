@@ -28,14 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.m_ComboFeeder = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.m_TxtUserName = new System.Windows.Forms.TextBox();
             this.m_BtnStart = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.m_Timer = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,11 +97,6 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             // 
-            // m_Timer
-            // 
-            this.m_Timer.Interval = 1;
-            this.m_Timer.Tick += new System.EventHandler(this.m_Timer_Tick);
-            // 
             // MainWnd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -127,7 +120,6 @@
         private System.Windows.Forms.TextBox m_TxtUserName;
         private System.Windows.Forms.Button m_BtnStart;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Timer m_Timer;
     }
 }
 
