@@ -55,21 +55,10 @@ namespace BJF_Feeder_CSharp
             {
                 try
                 {
-                    if (ConnectToFeeder(m_strIP, m_nPort, m_strUserName) == 1)
+                    if (m_bIsConnect == false && ConnectToFeeder(m_strIP, m_nPort, m_strUserName) == 1)
                     {
-                        if (m_bIsConnect == false)
-                        {
-                            Console.WriteLine("--- Server Connected! ---");
-                            m_bIsConnect = true;
-                        }
-                    }
-                    else
-                    {
-                        if (m_bIsConnect == true)
-                        {
-                            Console.WriteLine("--- Server Disconnected! ---");
-                            m_bIsConnect = false;
-                        }
+                        Console.WriteLine("--- Server Connected! ---");
+                        m_bIsConnect = true;
                     }
 
                     if (!m_bIsConnect) return;
@@ -93,12 +82,22 @@ namespace BJF_Feeder_CSharp
                             Logger.Instance().DumpQuote(strSymbol, dBid.ToString(), dAsk.ToString());
                         }
                     }
+                    else if (nRet < 0)
+                    {
+                        Console.WriteLine("--- Server Disconnected! ---");
+                        m_bIsConnect = false;
+                        Thread.Sleep(1000);
+                    }
+                }
+                catch (AccessViolationException ex) // Memory Violation Exception
+                {
+                    Console.WriteLine(ex);
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex);
                 }
-                Thread.Sleep(1);
+                //Thread.Sleep(1);
             }
             DisconnectFromFeeder();
         }
