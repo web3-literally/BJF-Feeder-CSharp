@@ -1,4 +1,4 @@
-﻿namespace BJF_Feeder_CSharp
+﻿namespace Feeder_CSharp
 {
     partial class MainWnd
     {
@@ -44,41 +44,41 @@
             this.m_ComboFeeder.Items.AddRange(new object[] {
             "US",
             "UK"});
-            this.m_ComboFeeder.Location = new System.Drawing.Point(63, 19);
+            this.m_ComboFeeder.Location = new System.Drawing.Point(63, 18);
             this.m_ComboFeeder.Name = "m_ComboFeeder";
-            this.m_ComboFeeder.Size = new System.Drawing.Size(75, 21);
+            this.m_ComboFeeder.Size = new System.Drawing.Size(75, 20);
             this.m_ComboFeeder.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 23);
+            this.label1.Location = new System.Drawing.Point(11, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.Size = new System.Drawing.Size(46, 12);
             this.label1.TabIndex = 1;
             this.label1.Text = "Feeder :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(166, 23);
+            this.label2.Location = new System.Drawing.Point(166, 21);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 13);
+            this.label2.Size = new System.Drawing.Size(64, 12);
             this.label2.TabIndex = 1;
             this.label2.Text = "UserName :";
             // 
             // m_TxtUserName
             // 
-            this.m_TxtUserName.Location = new System.Drawing.Point(235, 19);
+            this.m_TxtUserName.Location = new System.Drawing.Point(235, 18);
             this.m_TxtUserName.Name = "m_TxtUserName";
-            this.m_TxtUserName.Size = new System.Drawing.Size(166, 20);
+            this.m_TxtUserName.Size = new System.Drawing.Size(166, 19);
             this.m_TxtUserName.TabIndex = 2;
             // 
             // m_BtnStart
             // 
-            this.m_BtnStart.Location = new System.Drawing.Point(426, 18);
+            this.m_BtnStart.Location = new System.Drawing.Point(426, 17);
             this.m_BtnStart.Name = "m_BtnStart";
-            this.m_BtnStart.Size = new System.Drawing.Size(107, 23);
+            this.m_BtnStart.Size = new System.Drawing.Size(107, 21);
             this.m_BtnStart.TabIndex = 3;
             this.m_BtnStart.Text = "START";
             this.m_BtnStart.UseVisualStyleBackColor = true;
@@ -91,20 +91,20 @@
             this.groupBox1.Controls.Add(this.m_ComboFeeder);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 11);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(539, 60);
+            this.groupBox1.Size = new System.Drawing.Size(539, 55);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             // 
             // MainWnd
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(563, 87);
+            this.ClientSize = new System.Drawing.Size(563, 80);
             this.Controls.Add(this.groupBox1);
             this.Name = "MainWnd";
-            this.Text = "BJF-Feeder";
+            this.Text = "Feeder";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWnd_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

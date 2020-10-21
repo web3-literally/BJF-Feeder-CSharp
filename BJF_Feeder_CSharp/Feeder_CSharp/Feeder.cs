@@ -5,30 +5,41 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 
-namespace BJF_Feeder_CSharp
+namespace Feeder_CSharp
 {
-    class BJF_Feeder
+    class Feeder
     {
-        [DllImport("feeder_connector.dll", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Unicode)]
+        [DllImport("connector.dll", CharSet = CharSet.Unicode)]
         public static extern int ConnectToFeeder(String strIP, int nPort, String strUserName);
-        [DllImport("feeder_connector.dll", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Unicode)]
+        [DllImport("connector.dll", CharSet = CharSet.Unicode)]
         public static extern void DisconnectFromFeeder();
-        [DllImport("feeder_connector.dll", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Unicode)]
+        [DllImport("connector.dll", CharSet = CharSet.Unicode)]
         public static extern int ReceiveData(StringBuilder strVal1, double[] listVal1, double[] listVal2);
 
-        private static BJF_Feeder m_sFeeder = null;
+
+        [DllImport("MemMap.dll", CharSet = CharSet.Unicode)]
+        public static extern IntPtr SetMemString(string tag, string msg);
+        [DllImport("MemMap.dll", CharSet = CharSet.Unicode)]
+        public static extern IntPtr GetMemString(string tag);
+
+        private static Feeder m_sFeeder = null;
         private Thread m_threadScrap = null;
 
+        public static double[] listVal1 = new double[1000];
+        public static double[] listVal2 = new double[1000];
+        public static StringBuilder strVal1 = new StringBuilder(10000);
+
         public string m_strIP = "";
+        public string m_region = "";
         public int m_nPort = 9236;
         public string m_strUserName = "";
         public bool m_bIsConnect = false;
         public bool m_bThreadStart = false;
 
-        public static BJF_Feeder Instance()
+        public static Feeder Instance()
         {
             if (m_sFeeder == null)
-                m_sFeeder = new BJF_Feeder();
+                m_sFeeder = new Feeder();
             return m_sFeeder;
         }
         public void ScrapStart()
@@ -63,10 +74,6 @@ namespace BJF_Feeder_CSharp
 
                     if (!m_bIsConnect) return;
 
-                    double[] listVal1 = new double[200];
-                    double[] listVal2 = new double[200];
-                    StringBuilder strVal1 = new StringBuilder(100);
-
                     int nRet = ReceiveData(strVal1, listVal1, listVal2);
 
                     if (nRet > 0)
@@ -80,6 +87,21 @@ namespace BJF_Feeder_CSharp
 
                             Console.WriteLine(string.Format("{0}, {1}, {2}", strSymbol, dBid, dAsk));
                             Logger.Instance().DumpQuote(strSymbol, dBid.ToString(), dAsk.ToString());
+
+                            if (strSymbol == "USDJPY" || strSymbol == "GBPJPY" || strSymbol == "GBPUSD")
+                            {
+                                if (m_region == "NY")
+                                {
+                                    SetMemString(strSymbol + "_Bid_NY", dBid.ToString());
+                                    SetMemString(strSymbol + "_Ask_NY", dAsk.ToString());
+                                }
+                                else if (m_region == "LD")
+                                {
+                                    SetMemString(strSymbol + "_Bid_LD", dBid.ToString());
+                                    SetMemString(strSymbol + "_Ask_LD", dAsk.ToString());
+                                }
+
+                            }
                         }
                     }
                     else if (nRet < 0)
@@ -100,6 +122,7 @@ namespace BJF_Feeder_CSharp
                 //Thread.Sleep(1);
             }
             DisconnectFromFeeder();
+            
         }
     }
 }

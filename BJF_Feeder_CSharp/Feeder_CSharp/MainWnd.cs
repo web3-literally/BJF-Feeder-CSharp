@@ -8,11 +8,12 @@ using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
-namespace BJF_Feeder_CSharp
+namespace Feeder_CSharp
 {
     public partial class MainWnd : Form
     {
         public string m_strIP = "";
+        public string m_region = "";
         public string m_strUserName = "";
 
         public MainWnd()
@@ -25,9 +26,15 @@ namespace BJF_Feeder_CSharp
             m_strUserName = m_TxtUserName.Text;
 
             if (m_ComboFeeder.Text == "UK")
+            {
+                m_region = "LD";
                 m_strIP = "185.95.16.126";
+            }
             else if (m_ComboFeeder.Text == "US")
+            {
+                m_region = "NY";
                 m_strIP = "185.95.19.32";
+            }
 
             if (string.IsNullOrEmpty(m_strIP) || string.IsNullOrEmpty(m_strUserName))
             {
@@ -35,17 +42,16 @@ namespace BJF_Feeder_CSharp
                 return;
             }
 
-            BJF_Feeder.Instance().m_strIP = m_strIP;
-            BJF_Feeder.Instance().m_strUserName = m_strUserName;
-            BJF_Feeder.Instance().ScrapStart();
-
-            m_BtnStart.Enabled = false;
+            Feeder.Instance().m_strIP = m_strIP;
+            Feeder.Instance().m_region = m_region;
+            Feeder.Instance().m_strUserName = m_strUserName;
+            Feeder.Instance().ScrapStart();
         }
 
         
         private void MainWnd_FormClosing(object sender, FormClosingEventArgs e)
         {
-            BJF_Feeder.Instance().ScrapFinish();
+            Feeder.Instance().ScrapFinish();
         }
     }
 }

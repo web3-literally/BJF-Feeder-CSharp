@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1145
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BJF_Feeder_CSharp", "BJF_Feeder_CSharp\BJF_Feeder_CSharp.csproj", "{A9F2AE9B-3810-4D05-87D3-1DE2058DD3C0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Feeder_CSharp", "Feeder_CSharp\Feeder_CSharp.csproj", "{A9F2AE9B-3810-4D05-87D3-1DE2058DD3C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

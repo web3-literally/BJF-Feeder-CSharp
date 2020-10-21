@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace BJF_Feeder_CSharp
+namespace Feeder_CSharp
 {
     class Logger
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace BJF_Feeder_CSharp
+namespace Feeder_CSharp
 {
     static class Program
     {
